@@ -6,7 +6,7 @@ if __name__ == "__main__":
     argc = sys.argv[1:]
 
     if len(argc) != 3:
-        print("Usage: ./100-my_calculator.py <a> <operator> <b>.")
+        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         exit(1)
     else:
         a = int(argc[0])
@@ -17,8 +17,8 @@ if __name__ == "__main__":
         elif argc[1] == '-':
             print("{} - {} = {}".format(a, b, sub(a, b)))
             exit(0)
-        elif argc[1] == '*':
-            print("{} * {} = {}".format(a, b, mul(a, b)))
+        elif argc[1] == "*":
+            print("{} {} {} = {}".format(a, argc[1], b, mul(a, b)))
             exit(0)
         elif argc[1] == '/':
             print("{} / {} = {}".format(a, b, div(a, b)))
