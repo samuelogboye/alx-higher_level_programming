@@ -1,2 +1,3 @@
 #!/usr/bin/python3
-__import__('os').write(1, b'ABCDEFGHIJKLMNOPQRSTUVWXYZ\n')
+import string
+print(string.ascii_uppercase)
