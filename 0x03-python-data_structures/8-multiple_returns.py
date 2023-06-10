@@ -4,7 +4,7 @@ def multiple_returns(sentence):
 
     string_length = len(sentence)
     if string_length == 0:
-        first_char = "None"
+        first_char = None
     else:
         first_char = sentence[0]
     return string_length, first_char
