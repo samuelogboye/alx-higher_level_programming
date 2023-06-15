@@ -1,4 +1,0 @@
-#!/usr/bin/python3
-def roman_to_int(roman_string):
-    """a function def roman_to_int: converts a Roman numeral to an integer"""
-    
