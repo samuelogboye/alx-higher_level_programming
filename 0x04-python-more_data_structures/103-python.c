@@ -14,7 +14,7 @@ void print_python_bytes(PyObject *p)
 	printf("[.] bytes object infor\n");
 	if (!PyBytes_Check(p))
 	{
-		printf("  [ERROR Invalid Bytes Object\n");
+		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
 	}
 
@@ -34,6 +34,9 @@ void print_python_bytes(PyObject *p)
 	for (i = 0; i < limit; i++)
 		if (string[i] >= 0)
 			printf("  %02x", string[i]);
+		else
+			printf(" %02x", 256 + string[i]);
+
 
 	printf("\n");
 }
