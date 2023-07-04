@@ -1,4 +1,4 @@
 #!/usr/bin/python3
 def magic_string():
-    magic_string.count = magic_string.count + 1 if hasattr(magic_string, 'counter') else 1
-    return ', '.join(['BestSchool'] * magic_string.counter)
+    magic_string.count = getattr(magic_string, 'count', 0) + 1
+    return ", ".join(["BestSchool" for i in range(magic_string.count)])
