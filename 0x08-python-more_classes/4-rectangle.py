@@ -61,13 +61,13 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return ("")
 
-        rectangle = ""
+        rectangle_str = ""
         for column in range(self.__height):
             for row in range(self.__width):
-                rectangle += "#"
+                rectangle_str += "#"
             if column < self.__height - 1:
-                rectangle += "\n"
-        return (rectangle)
+                rectangle_str += "\n"
+        return (rectangle_str)
 
     def __repr__(self) -> repr:
         return ("Rectangle({}, {})".format(self.__width, self.__height))
