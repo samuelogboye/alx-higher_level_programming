@@ -8,7 +8,6 @@ class Rectangle(BaseGeometry):
 
     def __init__(self, width, height):
         """Initializing Rectangle"""
-
         super().integer_validator("width", width)
         self.__width = width
         super().integer_validator("height", height)
@@ -20,6 +19,6 @@ class Rectangle(BaseGeometry):
 
     def __str__(self):
         """Returns the print() and str() of this Rectangle"""
-        string = "[" + str(self.__class__.__name__) + "]"
+        string = "[" + str(type(self).__name__) + "]"
         string += str(self.__width) + "/" + str(self.__height)
         return string
