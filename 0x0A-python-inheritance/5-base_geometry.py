@@ -3,6 +3,6 @@
 
 
 class BaseGeometry:
-    """An Empty class defination"""
+    """An Empty class defined"""
 
     pass
