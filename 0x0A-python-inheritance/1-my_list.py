@@ -8,4 +8,7 @@ class MyList(list):
 
     def print_sorted(self):
         """print sorted list"""
-        print(sorted(self))
+        if len(self) == 0:
+            exit()
+        else:
+            print(sorted(self))
