@@ -9,6 +9,6 @@ class MyList(list):
     def print_sorted(self):
         """print sorted list"""
         if len(self) == 0:
-            exit()
+            break
         else:
             print(sorted(self))
