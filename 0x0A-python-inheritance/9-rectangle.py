@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Importing from 7's BaseGeometry"""
+"""Importing from 7's BaseGeometry Module"""
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
