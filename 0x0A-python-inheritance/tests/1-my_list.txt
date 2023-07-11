@@ -1,0 +1,77 @@
+====================================
+A Class that Inherit from a List
+====================================
+
+Import file
+>>> MyList = __import__('1-my_list').MyList
+>>> 
+
+--------------------------------------------
+
+success case:
+
+
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+>>>
+
+---------------------------------------------
+
+Fail case Undefined object:
+
+>>> MyList = __import__('1-my_list').MyList
+>>> my_list2.print_sorted()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'my_list2' is not defined
+>>>
+
+--------------------------------------------
+
+Test case to add a new list:
+
+>>> a = [1, 9, 5, 4, 22, 8, 13]
+>>> my_list = MyList(a)
+>>> my_list.print_sorted()
+[1, 4, 5, 8, 9, 13, 22]
+>>>
+
+--------------------------------------------
+
+Test case to check negative numbers
+
+>>> MyList = __import__('1-my_list').MyList
+>>> my_list = MyList()
+>>> my_list.append(5)
+>>> my_list.append(1)
+>>> my_list.append(-18)
+>>> my_list.append(-2)
+>>> my_list.append(31)
+>>> my_list.append(-3)
+>>> my_list.print_sorted()
+[-18, -3, -2, 1, 5, 31]
+>>>
+
+---------------------------------------------
+
+Test case list with unknown attribute
+
+>>> my_list = [1, 2, 3]
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'list' object has no attribute 'print_sorted'
+>>>
+
+
+End all test case.
