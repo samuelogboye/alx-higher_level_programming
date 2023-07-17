@@ -70,4 +70,55 @@ class Rectangle(Base):
             self.__y = value
 
     def area(self):
+        """returns the area of the rectangle"""
         return self.width * self.height
+
+    def display(self):
+        """method that prints a rectangle with sign '#' """
+        for y in range(self.__y):
+            print("")
+        for row in range(self.__height):
+            for x in range(self.__x):
+                print(" ", end="")
+            for column in range(self.__width):
+                print("#", end="")
+            print()
+
+    def __str__(self) -> str:
+        """a method"""
+        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} -\
+ {self.__width}/{self.__height}"
+
+    def update(self, *args, **kwargs):
+        """A Public method that assign an argument to all attributes."""
+        if args is not None:
+            for i in range(len(args)):
+                if i == 0:
+                    self.id = args[i]
+                elif i == 1:
+                    self.__width = args[i]
+                elif i == 2:
+                    self.__height = args[i]
+                elif i == 3:
+                    self.__x = args[i]
+                elif i == 4:
+                    self.__y = args[i]
+        if kwargs is not None:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.id = value
+                elif key == "width":
+                    self.__width = value
+                elif key == "height":
+                    self.__height = value
+                elif key == "x":
+                    self.__x = value
+                elif key == "y":
+                    self.__y = value
+
+    def to_dictionary(self):
+        """Returns the dictionary representation of a Rectangle"""
+        obj_dictionary = {'id': self.id, 'width': self.__width,
+                          'height': self.__height, 'x': self.__x,
+                          'y': self.__y}
+        return obj_dictionary
