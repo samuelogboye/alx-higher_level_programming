@@ -138,3 +138,36 @@ class TestSquare(unittest.TestCase):
         """
         for func in self.setup:
             self.assertTrue(len(func[1].__doc__) >= 1)
+
+class TestBase(unittest.TestCase):
+    """
+    Testing the Base class
+    """
+
+    def test_from_json_string_none(self):
+        """
+        Test the from_json_string method with None as input
+        """
+        result = Base.from_json_string(None)
+        self.assertEqual(result, '[]')
+
+    def test_from_json_string_empty(self):
+        """
+        Test the from_json_string method with an empty string as input
+        """
+        result = Base.from_json_string("[]")
+        self.assertEqual(result, [])
+
+    def test_from_json_string_single_object(self):
+        """
+        Test the from_json_string method with a single JSON object as input
+        """
+        result = Base.from_json_string('[{ "id": 89 }]')
+        self.assertEqual(result, [{"id": 89}])
+
+    def test_from_json_string_multiple_objects(self):
+        """
+        Test the from_json_string method with multiple JSON objects as input
+        """
+        result = Base.from_json_string('[{ "id": 89 }, { "id": 90 }]')
+        self.assertEqual(result, [{"id": 89}, {"id": 90}])
