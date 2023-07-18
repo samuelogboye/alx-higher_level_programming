@@ -3,6 +3,7 @@
 
 import json
 
+
 class Base:
     """Defining Class Base"""
 
@@ -46,7 +47,7 @@ class Base:
             return "[]"
 
         if type(json_string) != str:
-                raise TypeError("json_string must be a string")
+            raise TypeError("json_string must be a string")
         return json.loads(json_string)
 
     @classmethod
