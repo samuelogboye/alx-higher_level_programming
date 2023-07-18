@@ -35,6 +35,12 @@ class SquareTest(unittest.TestCase):
         self.assertEqual(square.y, 0)
         self.assertEqual(square.id, 12)
 
+    def test_create_square_with_default_values2(self):
+        square = Square(5)
+        self.assertEqual(square.width, 5)
+        self.assertEqual(square.height, 5)
+        self.assertEqual(square.id, 1)
+
     def test_create_square_with_negative_size(self):
         with self.assertRaises(ValueError):
             square = Square(1, 2, -1, 4)
@@ -105,6 +111,32 @@ class SquareTest(unittest.TestCase):
         self.square.update(2, 10, 4, 6)
         expected_dict = {'id': 2, 'size': 10, 'x': 4, 'y': 6}
         self.assertEqual(self.square.to_dictionary(), expected_dict)
+
+
+    def test_create_square_with_size_as_string(self):
+        with self.assertRaises(TypeError):
+            square = Square("12")
+
+
+    def test_create_square_with_size_as_list(self):
+        with self.assertRaises(TypeError):
+             square = Square([13])
+
+    def test_create_square_with_size_as_float(self):
+        with self.assertRaises(TypeError):
+             square = Square(13.12)
+
+    def test_create_square_with_size_as_dict(self):
+        with self.assertRaises(TypeError):
+            square = Square({ 'id': 12 })
+
+    def test_create_square_with_size_as_negative(self):
+        with self.assertRaises(ValueError):
+            square = Square(-89)
+
+    def test_create_square_with_size_as_zero(self):
+        with self.assertRaises(ValueError):
+            square = Square(0)
 
 
 if __name__ == '__main__':
