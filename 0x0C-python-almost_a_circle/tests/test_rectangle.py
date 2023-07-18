@@ -138,5 +138,10 @@ class TestRectangle(unittest.TestCase):
         self.assertIsInstance(rectangles[1], Rectangle)
 
 
+    def test_create_rectangle_with_non_integer_arguments(self):
+        with self.assertRaises(TypeError):
+            rectangle = Rectangle(13, "12")
+
+
 if __name__ == '__main__':
     unittest.main()
