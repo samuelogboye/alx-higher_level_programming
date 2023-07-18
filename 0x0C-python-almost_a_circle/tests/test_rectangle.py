@@ -154,6 +154,22 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             rectangle = Rectangle(13, { 'id': 12 })
 
+    def test_create_rectangle_with_x_as_string(self):
+        with self.assertRaises(TypeError):
+            rectangle = Rectangle(13, 10, "12")
+
+    def test_create_rectangle_with_x_as_list(self):
+        with self.assertRaises(TypeError):
+            rectangle = Rectangle(13, 10, [13])
+
+    def test_create_rectangle_with_x_as_float(self):
+        with self.assertRaises(TypeError):
+            rectangle = Rectangle(13, 10, 13.12)
+
+    def test_create_rectangle_with_x_as_invalid(self):
+        with self.assertRaises(TypeError):
+            rectangle = Rectangle(13, 10, { 'id': 12 })
+
 
 if __name__ == '__main__':
     unittest.main()

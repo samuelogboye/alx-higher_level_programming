@@ -8,6 +8,23 @@ class Rectangle(Base):
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """method that initializes value for rectangle object"""
+        if not isinstance(x, int):
+            raise TypeError("x must be an integer")
+        if x < 0:
+            raise ValueError("x must be >= 0")
+
+        if not isinstance(y, int):
+            raise TypeError("y must be an integer")
+        if y < 0:
+            raise ValueError("y must be >= 0")
+        if not isinstance(width, int):
+            raise TypeError("width must be an integer")
+        if width < 0:
+            raise ValueError("width must be >= 0")
+        if not isinstance(height, int):
+            raise TypeError("height must be an integer")
+        if height < 0:
+            raise ValueError("height must be >= 0")
         self.width = width
         self.height = height
         self.__x = x
@@ -94,26 +111,66 @@ class Rectangle(Base):
         if args is not None:
             for i in range(len(args)):
                 if i == 0:
+                    if not isinstance(args[i], int):
+                        raise TypeError("id must be an integer")
+                    if args[i] <= 0:
+                        raise ValueError("id must be > 0")
                     self.id = args[i]
                 elif i == 1:
+                    if not isinstance(args[i], int):
+                        raise TypeError("width must be an integer")
+                    if args[i] <= 0:
+                        raise ValueError("width must be > 0")
                     self.__width = args[i]
                 elif i == 2:
+                    if not isinstance(args[i], int):
+                        raise TypeError("height must be an integer")
+                    if args[i] <= 0:
+                        raise ValueError("height must be > 0")
                     self.__height = args[i]
                 elif i == 3:
+                    if not isinstance(args[i], int):
+                        raise TypeError("x must be an integer")
+                    if args[i] <= 0:
+                        raise ValueError("x must be > 0")
                     self.__x = args[i]
                 elif i == 4:
+                    if not isinstance(args[i], int):
+                        raise TypeError("y must be an integer")
+                    if args[i] <= 0:
+                        raise ValueError("y must be > 0")
                     self.__y = args[i]
         if kwargs is not None:
             for key, value in kwargs.items():
                 if key == "id":
+                    if not isinstance(value, int):
+                        raise TypeError("id must be an integer")
+                    if value <= 0:
+                        raise ValueError("id must be > 0")
                     self.id = value
                 elif key == "width":
+                    if not isinstance(value, int):
+                        raise TypeError("width must be an integer")
+                    if value <= 0:
+                        raise ValueError("width must be > 0")
                     self.__width = value
                 elif key == "height":
+                    if not isinstance(value, int):
+                        raise TypeError("height must be an integer")
+                    if value <= 0:
+                        raise ValueError("height must be > 0")
                     self.__height = value
                 elif key == "x":
+                    if not isinstance(value, int):
+                        raise TypeError("x must be an integer")
+                    if value <= 0:
+                        raise ValueError("x must be > 0")
                     self.__x = value
                 elif key == "y":
+                    if not isinstance(value, int):
+                        raise TypeError("y must be an integer")
+                    if value <= 0:
+                        raise ValueError("y must be > 0")
                     self.__y = value
 
     def to_dictionary(self):
