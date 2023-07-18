@@ -1,5 +1,8 @@
 #!/usr/bin/py
 
+from io import StringIO
+from unittest.mock import patch
+import os
 import unittest
 from models.rectangle import Rectangle
 
@@ -51,6 +54,88 @@ class TestRectangle(unittest.TestCase):
             'y': 3
         }
         self.assertEqual(self.rectangle.to_dictionary(), expected_output)
+
+    def test_rectangle_exists(self):
+        """Test that a Rectangle object can be created"""
+        r = Rectangle(1, 2)
+        self.assertIsInstance(r, Rectangle)
+
+    def test_rectangle_with_three_arguments(self):
+        """Test that a Rectangle object can be created with three arguments"""
+        r = Rectangle(1, 2, 3)
+        self.assertIsInstance(r, Rectangle)
+
+    def test_rectangle_with_four_arguments(self):
+        """Test that a Rectangle object can be created with four arguments"""
+        r = Rectangle(1, 2, 3, 4)
+        self.assertIsInstance(r, Rectangle)
+
+    def test_rectangle_with_string_arguments(self):
+        """Test, a Rectangle object can't be created with string arguments"""
+        with self.assertRaises(TypeError):
+            r = Rectangle("1", 2)
+
+    def test_rectangle_with_negative_arguments(self):
+        """Test that a Rectangle object can't be created with negative arguments"""
+        with self.assertRaises(ValueError):
+            r = Rectangle(-1, 2)
+
+    def test_display_without_x_and_y(self):
+        """Test the display method of Rectangle without x and y"""
+        r = Rectangle(3, 2)
+        expected_output = "###\n###\n"
+        with patch("sys.stdout", new=StringIO()) as fake_output:
+            r.display()
+            self.assertEqual(fake_output.getvalue(), expected_output)
+
+    def test_display_without_y(self):
+        """Test the display method of Rectangle without y"""
+        r = Rectangle(3, 2, 1)
+        expected_output = " ###\n ###\n"
+        with patch("sys.stdout", new=StringIO()) as fake_output:
+            r.display()
+            self.assertEqual(fake_output.getvalue(), expected_output)
+
+    def test_update_with_kwargs(self):
+        """Test the update method of Rectangle with keyword arguments"""
+        r = Rectangle(1, 2)
+        r.update(id=89, width=1, height=2, x=3, y=4)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 2)
+        self.assertEqual(r.x, 3)
+        self.assertEqual(r.y, 4)
+
+    def test_create_with_kwargs(self):
+        """Test the create method of Rectangle with keyword arguments"""
+        r = Rectangle.create(id=89, width=1, height=2, x=3, y=4)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 2)
+        self.assertEqual(r.x, 3)
+        self.assertEqual(r.y, 4)
+
+    def test_save_to_file(self):
+        """Test the save_to_file method of Rectangle"""
+        r1 = Rectangle(1, 2, 3, 4, 5)
+        r2 = Rectangle(6, 7, 8, 9, 10)
+        Rectangle.save_to_file([r1, r2])
+        file_exists = os.path.isfile("Rectangle.json")
+        self.assertTrue(file_exists)
+
+    def test_load_from_file_nonexistent_file(self):
+        """Test the load_from_file method of Rectangle when the file doesn't exist"""
+        Rectangle.save_to_file([])
+        rectangles = Rectangle.load_from_file()
+        self.assertEqual(rectangles, [])
+
+    def test_load_from_file_existing_file(self):
+        """Test the load_from_file method of Rectangle when the file exists"""
+        r1 = Rectangle(1, 2, 3, 4, 5)
+        r2 = Rectangle(6, 7, 8, 9, 10)
+        Rectangle.save_to_file([r1, r2])
+        rectangles = Rectangle.load_from_file()
+        self.assertEqual(len(rectangles), 2)
+        self.assertIsInstance(rectangles[0], Rectangle)
+        self.assertIsInstance(rectangles[1], Rectangle)
 
 
 if __name__ == '__main__':

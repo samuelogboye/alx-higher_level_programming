@@ -8,8 +8,8 @@ class Rectangle(Base):
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """method that initializes value for rectangle object"""
-        self.__width = width
-        self.__height = height
+        self.width = width
+        self.height = height
         self.__x = x
         self.__y = y
         super().__init__(id)
@@ -24,8 +24,8 @@ class Rectangle(Base):
             raise TypeError("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0")
-        else:
-            self.__width = value
+
+        self.__width = value
 
     # height getter and setter
     @property
@@ -38,8 +38,8 @@ class Rectangle(Base):
             raise TypeError("height must be an integer")
         if value <= 0:
             raise ValueError("height must be > 0")
-        else:
-            self.__height = value
+
+        self.__height = value
 
     # x getter and setter
     @property
@@ -52,8 +52,8 @@ class Rectangle(Base):
             raise TypeError("x must be an integer")
         if value < 0:
             raise ValueError("x must be >= 0")
-        else:
-            self.__x = value
+
+        self.__x = value
 
     # y getter and setter
     @property
@@ -66,25 +66,25 @@ class Rectangle(Base):
             raise TypeError("y must be an integer")
         if value < 0:
             raise ValueError("y must be >= 0")
-        else:
-            self.__y = value
+
+        self.__y = value
 
     def area(self):
         """returns the area of the rectangle"""
-        return self.width * self.height
+        return self.__height * self.__width
 
     def display(self):
         """method that prints a rectangle with sign '#' """
         for y in range(self.__y):
             print("")
         for row in range(self.__height):
-            for x in range(self.__x):
+            for x in range(self.x):
                 print(" ", end="")
             for column in range(self.__width):
                 print("#", end="")
             print()
 
-    def __str__(self) -> str:
+    def __str__(self):
         """a method"""
         return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} -\
  {self.__width}/{self.__height}"
