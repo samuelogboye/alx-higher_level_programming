@@ -170,6 +170,23 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             rectangle = Rectangle(13, 10, { 'id': 12 })
 
+    def test_create_rectangle_with_width_as_negative(self):
+        with self.assertRaises(ValueError):
+            rectangle = Rectangle(-12, 13)
+
+    def test_create_rectangle_with_width_as_zero(self):
+        with self.assertRaises(ValueError):
+            rectangle = Rectangle(0, 13)
+
+    def test_create_rectangle_with_height_as_negative(self):
+        with self.assertRaises(ValueError):
+            rectangle = Rectangle(-12, 13)
+
+
+    def test_create_rectangle_with_height_as_zero(self):
+        with self.assertRaises(ValueError):
+            rectangle = Rectangle(13, 0)
+
 
 if __name__ == '__main__':
     unittest.main()
