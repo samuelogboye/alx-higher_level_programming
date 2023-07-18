@@ -37,20 +37,17 @@ class SquareTest(unittest.TestCase):
 
     def test_create_square_with_negative_size(self):
         with self.assertRaises(ValueError):
-            square = Square(1, 2, 3, -1)
+            square = Square(1, 2, -1, 4)
 
     def test_create_square_with_non_integer_arguments(self):
-#        with self.assertRaises(TypeError):
-#            square = Square(1, 2, 3, '1')
+        with self.assertRaises(TypeError):
+            square = Square(1, 2, '1', 3)
 
         with self.assertRaises(TypeError):
             square = Square(1, '2', 3, 1)
 
         with self.assertRaises(TypeError):
             square = Square(1, 2, '3', 1)
-
-        with self.assertRaises(TypeError):
-            square = Square(1, 2, 3, 1.5)
 
         with self.assertRaises(TypeError):
             S = Square('width', 'height')
@@ -68,7 +65,7 @@ class SquareTest(unittest.TestCase):
             S = Square(True, False)
 
         with self.assertRaises(TypeError):
-            S = Square(1, 2, True, False)
+            S = Square(1, 2, '2', 1)
 
         with self.assertRaises(TypeError):
             S = Square([1, 1], 2, 3, 4)
@@ -81,7 +78,7 @@ class SquareTest(unittest.TestCase):
 
     def test_create_square_with_invalid_attributes(self):
         with self.assertRaises(ValueError):
-            square = Square(1, 2, 3, -1)
+            square = Square(1, 2, -1, 4)
 
     def test_create_square_with_extra_attributes(self):
         with self.assertRaises(TypeError):

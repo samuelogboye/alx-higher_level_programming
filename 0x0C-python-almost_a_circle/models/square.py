@@ -10,10 +10,24 @@ class Square(Rectangle):
 
     def __init__(self, size, x=0, y=0, id=None):
         """Initiatlizing Squares"""
+        if not isinstance(size, int):
+            raise TypeError("size must be an integer")
+        if not isinstance(x, int):
+            raise TypeError("x must be an integer")
+        if not isinstance(y, int):
+            raise TypeError("y must be an integer")
+        if size <= 0:
+            raise ValueError("size must be > 0")
+        if x < 0:
+            raise ValueError("x must be >= 0")
+        if y < 0:
+            raise ValueError("y must be >= 0")
+        if id is not None and not isinstance(id, int):
+            raise TypeError("id must be an integer")
         self.__size = size
         self.__x = x
         self.__y = y
-        self.id = None
+        self.id = id if id is not None else 0
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
@@ -55,12 +69,26 @@ class Square(Rectangle):
                 if args[0] is not None:
                     if type(args[0]) != int:
                         raise TypeError("id must be an integer")
+                    if args[0] < 0:
+                        raise ValueError("id must be >= 0")
                     self.id = args[0]
             if len(args) > 1:
+                if not isinstance(args[1], int):
+                    raise TypeError("size must be an integer")
+                if args[1] <= 0:
+                    raise ValueError("size must be > 0")
                 self.__size = args[1]
             if len(args) > 2:
+                if args[2] < 0:
+                    raise ValueError("x must be >= 0")
+                if not isinstance(args[2], int):
+                    raise TypeError("x must be an integer")
                 self.__x = args[2]
             if len(args) > 3:
+                if args[3] < 0:
+                    raise ValueError("y must be >= 0")
+                if not isinstance(args[3], int):
+                    raise TypeError("y must be an integer")
                 self.__y = args[3]
         else:
             for key, value in kwargs.items():
@@ -70,10 +98,22 @@ class Square(Rectangle):
                             raise TypeError("id must be an integer")
                     self.id = value
                 if key == "size":
-                     self.__size = value
+                    if value <= 0:
+                        raise ValueError("size must be > 0")
+                    if not isinstance(value, int):
+                        raise TypeError("size must be an integer")
+                    self.__size = value
                 if key == "x":
+                    if value < 0:
+                        raise ValueError("x must be >= 0")
+                    if not isinstance(value, int):
+                        raise TypeError("x must be an integer")
                     self.__x = value
                 if key == "y":
+                    if value < 0:
+                        raise ValueError("y must be >= 0")
+                    if not isinstance(value, int):
+                        raise TypeError("y must be an integer")
                     self.__y = value
 
     def to_dictionary(self):
