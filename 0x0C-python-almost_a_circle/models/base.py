@@ -98,17 +98,17 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-         """Deserializes CSV format from a file"""
-         file = cls.__name__ + ".csv"
-         try:
-             with open(file, "r", newline="") as file_obj:
-                 if cls.__name__ == "Rectangle":
-                     fieldnames = ["id", "width", "height", "x", "y"]
-                 else:
-                     fieldnames = ["id", "size", "x", "y"]
-                 list_dicts = csv.DictReader(file_obj, fieldnames=fieldnames)
-                 list_dicts = [dict([k, int(v)] for k, v in d.items())
+        """Deserializes CSV format from a file"""
+        file = cls.__name__ + ".csv"
+        try:
+            with open(file, "r", newline="") as file_obj:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                list_dicts = csv.DictReader(file_obj, fieldnames=fieldnames)
+                list_dicts = [dict([k, int(v)] for k, v in d.items())
                               for d in list_dicts]
-                 return [cls.create(**d) for d in list_dicts]
-         except IOError:
-             return []
+                return [cls.create(**d) for d in list_dicts]
+        except IOError:
+            return []
