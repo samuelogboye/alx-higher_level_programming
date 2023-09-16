@@ -23,8 +23,11 @@ if __name__ == '__main__':
 
     cur = db.cursor()
 
-    # Execute the query with a parameter placeholder
-    cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC", (argv[4],))
+     # Create the SQL query with string formatting
+    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(argv[4])
+
+    # Execute the query
+    cur.execute(query)
 
     rows = cur.fetchall()
 
