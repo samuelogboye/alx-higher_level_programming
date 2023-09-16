@@ -5,22 +5,22 @@ A script that lists all states from the database
 """
 
 import MySQLdb
-
 from sys import argv
+
 
 if __name__ == '__main__':
     """
     connect to the database and execute the querry that
     will fetch all data from the 'states' table
     """
-    conn = MySQLdb.connect(
+    db = MySQLdb.connect(
         host="localhost", user=argv[1], port=3306, passwd=argv[2], db=argv[3])
 
-    cursor = conn.cursor()
+    cur = db.cursor()
 
-    cursor.execute("SELECT * FROM states")
+    cur.execute("SELECT * FROM states ORDER BY id ASC")
 
-    rows = cursor.fetchall()
+    rows = cur.fetchall()
 
     for row in rows:
         print(row)
