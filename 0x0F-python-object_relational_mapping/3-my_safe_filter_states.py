@@ -36,7 +36,7 @@ if __name__ == '__main__':
 
     #  to prevent SQL injection
     cur.execute(
-        "SELECT * FROM states WHERE name LIKE \
+        "SELECT * FROM states WHERE name LIKE\
                     BINARY %(name)s ORDER BY states.id ASC", {'name': argv[4]})
 
     # Execute the query
