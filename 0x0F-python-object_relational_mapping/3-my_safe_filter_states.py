@@ -18,8 +18,12 @@ if __name__ == '__main__':
         print("Usage: ./script.py <username> <password>\
             <database> <name_to_search>")
         exit(1)
+    # Check if the length of the argument is less than 8
+    # to prevent SQL injection
+    """
     if len(argv[4]) > 8:
         exit(1)
+    """
 
     db = MySQLdb.connect(
         host="localhost", user=argv[1], port=3306, passwd=argv[2], db=argv[3])
@@ -29,6 +33,11 @@ if __name__ == '__main__':
     # Create the SQL query with string formatting
     query = "SELECT * FROM states WHERE name LIKE BINARY '{}'\
         ORDER BY id ASC".format(argv[4])
+
+    #  to prevent SQL injection
+    cur.execute(
+        "SELECT * FROM states WHERE name LIKE \
+                    BINARY %(name)s ORDER BY states.id ASC", {'name': argv[4]})
 
     # Execute the query
     cur.execute(query)
