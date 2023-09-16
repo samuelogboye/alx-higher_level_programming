@@ -15,7 +15,8 @@ if __name__ == '__main__':
     """
     # Check if the correct number of arguments are provided
     if len(argv) != 5:
-        print("Usage: ./script.py <username> <password> <database> <name_to_search>")
+        print("Usage: ./script.py <username> <password>\
+            <database> <name_to_search>")
         exit(1)
 
     db = MySQLdb.connect(
@@ -23,8 +24,9 @@ if __name__ == '__main__':
 
     cur = db.cursor()
 
-     # Create the SQL query with string formatting
-    query = "SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY id ASC".format(argv[4])
+    # Create the SQL query with string formatting
+    query = "SELECT * FROM states WHERE name LIKE BINARY '{}'\
+        ORDER BY id ASC".format(argv[4])
 
     # Execute the query
     cur.execute(query)
