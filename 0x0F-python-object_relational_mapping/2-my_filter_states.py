@@ -13,14 +13,24 @@ if __name__ == '__main__':
     connect to the database and execute the querry that
     will fetch all data from the 'states' table where name matches the argument
     """
+    # Check if the correct number of arguments are provided
+    if len(argv) != 5:
+        print("Usage: ./script.py <username> <password> <database> <name_to_search>")
+        exit(1)
+
     db = MySQLdb.connect(
         host="localhost", user=argv[1], port=3306, passwd=argv[2], db=argv[3])
 
     cur = db.cursor()
 
+    # Execute the query with a parameter placeholder
     cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC", (argv[4],))
 
     rows = cur.fetchall()
 
     for row in rows:
         print(row)
+
+    # Close the cursor and the database connection
+    cur.close()
+    db.close()
