@@ -24,7 +24,7 @@ if __name__ == '__main__':
     cur = db.cursor()
 
      # Create the SQL query with string formatting
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(argv[4])
+    query = "SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY id ASC".format(argv[4])
 
     # Execute the query
     cur.execute(query)
