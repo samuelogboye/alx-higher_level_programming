@@ -6,7 +6,7 @@ from sys import argv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from relationship_state import Base, State
-from relationship_city import Base, City
+from relationship_city import City
 
 
 if __name__ == "__main__":
@@ -23,5 +23,10 @@ if __name__ == "__main__":
     session = Session()
 
     # add the new state to the database
-    session.add(City(name="San Francisco", state=State(name="California")))
+    newState = State(name='California')
+    newCity = City(name='San Francisco')
+    newState.cities.append(newCity)
+
+    session.add(newState)
+    session.add(newCity)
     session.commit()
