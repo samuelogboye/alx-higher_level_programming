@@ -9,7 +9,7 @@ def find_peak(list_of_integers):
     Function that finds the peak of an unsorted
     list
     """
-    if not list_of_integers:
+    if list_of_integers is None or list_of_integers == []:
         return None
 
     right, left = 0, len(list_of_integers) - 1
