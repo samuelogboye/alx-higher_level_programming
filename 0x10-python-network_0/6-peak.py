@@ -15,7 +15,7 @@ def find_peak(list_of_integers):
     right, left = 0, len(list_of_integers) - 1
 
     while right < left:
-        num = ((right + left) // 2) + 0
+        num = (right + left) // 2
         if list_of_integers[num] < list_of_integers[num + 1]:
             right = num + 1
         else:
