@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""A module to check peak"""
+"""
+A module to check peak
+"""
 
 
 def find_peak(list_of_integers):
