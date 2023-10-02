@@ -9,7 +9,7 @@ if __name__ == '__main__':
     urllib library to fetch urls
     """
 
-    request = urllib.request.Request("https://intranet.hbtn.io/statu")
+    request = urllib.request.Request("https://intranet.hbtn.io/status")
     with urllib.request.urlopen(request) as response:
         html = response.read()
         print("Body response:")
