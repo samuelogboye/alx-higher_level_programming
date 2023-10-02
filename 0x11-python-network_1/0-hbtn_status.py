@@ -3,9 +3,9 @@
 Fetches https://intranet.hbtn.io/status
 ok
 """
+import urllib.request
 
 if __name__ == '__main__':
-    import urllib.request
     """
     urllib library to fetch urls
     """
