@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 
-"""A script that fetches http://intranet.hbtn.io/status"""
+"""
+A script that sends an HTTP Request to a URL and prinyt out
+the response
+"""
 
 import requests
 
