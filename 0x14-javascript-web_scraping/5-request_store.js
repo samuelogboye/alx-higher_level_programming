@@ -3,15 +3,16 @@
 const request = require('request');
 const fs = require('fs');
 
-const url = process.argv[2];
-const filePath = process.argv[3];
+// More efficient way:
+request(process.argv[2]).pipe(fs.createWriteStream(process.argv[3]));
 
-request(url, (error, response, body) => {
-  if (!error && response.statusCode === 200) {
-    fs.writeFile(filePath, body, 'utf8', (error) => {
-      if (error) {
-        console.log(error);
-      }
-    });
-  }
-});
+// Less Efficient for large content, because it was first loaded into memory
+// request(process.argv[2], (error, response, body) => {
+//   if (!error && response.statusCode === 200) {
+//     fs.writeFile(process.argv[3], body, "utf8", (error) => {
+//       if (error) {
+//         console.log(error);
+//       }
+//     });
+//   }
+// });
