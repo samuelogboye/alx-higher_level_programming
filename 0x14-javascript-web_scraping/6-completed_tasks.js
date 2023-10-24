@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-const request = require('request');
+const request = require("request");
 
 const completedTasks = {};
 
@@ -17,5 +17,7 @@ request(process.argv[2], (error, response, body) => {
       }
     }
     console.log(completedTasks);
+  } else {
+    console.log(error);
   }
 });
