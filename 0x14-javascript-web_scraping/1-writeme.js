@@ -6,8 +6,6 @@ const contentToWrite = process.argv[3]; // Get the content to write from the com
 
 fs.writeFile(filePath, contentToWrite, 'utf8', (error) => {
   if (error) {
-    console.error('Error writing to the file:', error);
-  } else {
-    console.log('File has been written.');
+    console.log(error);
   }
 });
