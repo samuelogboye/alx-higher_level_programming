@@ -4,17 +4,15 @@ const request = require('request');
 
 const url = process.argv[2];
 
-let number = 0;
 request(url, (error, response, body) => {
   if (!error && response.statusCode === 200) {
-    const data = JSON.parse(body);
-    for (let i = 0; i < data.results.length; i++) {
-      if (
-        data.results[i].characters.includes(
-          'https://swapi-api.alx-tools.com/api/people/18/'
-        )
-      ) { number += 1; }
-    }
-    console.log(number);
+    const results = JSON.parse(body).results;
+    console.log(
+      results.reduce((count, movie) => {
+        return movie.characters.find((character) => character.includes('18'))
+          ? count + 1
+          : count;
+      }, 0)
+    );
   }
 });
